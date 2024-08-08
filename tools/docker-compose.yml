@@ -1,0 +1,22 @@
+version: '3'
+
+volumes:
+  edu-mysql:
+
+services:
+  mysql:
+    platform: linux/amd64
+    image: mysql:8.0.23
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --explicit_defaults_for_timestamp=1
+    container_name: edu-mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=edu
+      - MYSQL_USER=mySql
+      - MYSQL_PASSWORD=1234567890
+      - MYSQL_ROOT_PASSWORD=root
+      - TZ=Asia/Seoul
+    volumes:
+      - edu-mysql:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
