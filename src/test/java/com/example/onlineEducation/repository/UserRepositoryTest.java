@@ -17,7 +17,7 @@ class UserRepositoryTest {
     @Test
     public void jpaSave(){
         for(long i = 0L; i < 10; i++){
-            User user = User.builder().name("Hi" + i).build();
+            User user = User.builder().user_name("Hi" + i).build();
             System.out.println("User : " + user.toString());
             userRepository.save(user);
         }
@@ -31,7 +31,7 @@ class UserRepositoryTest {
 
     @Test
     public void jpaDelete(){
-        userRepository.delete(User.builder().name("Hi4").id(5L).build());
+        userRepository.delete(User.builder().user_name("Hi4").user_id(5L).build());
     }
 
 

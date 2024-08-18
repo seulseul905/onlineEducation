@@ -8,12 +8,12 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "eduUser")
+@Table(name = "edu_user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long user_id;
 
-    @Column(nullable = true)
-    private String name;
+    @Column(nullable = false)
+    private String user_name;
 }
