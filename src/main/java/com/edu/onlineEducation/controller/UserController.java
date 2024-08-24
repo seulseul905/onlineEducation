@@ -1,10 +1,11 @@
-package com.example.onlineEducation.controller;
+package com.edu.onlineEducation.controller;
 
-import com.example.onlineEducation.entity.User;
-import com.example.onlineEducation.service.UserService;
-import com.example.onlineEducation.service.dto.CreateUserRequestDto;
-import com.example.onlineEducation.service.dto.DeleteUserRequestDto;
-import com.example.onlineEducation.service.dto.UpdateUserRequestDto;
+import com.edu.onlineEducation.entity.Student;
+import com.edu.onlineEducation.service.UserService;
+import com.edu.onlineEducation.service.dto.CreateStudentRequestDto;
+import com.edu.onlineEducation.service.dto.DeleteUserRequestDto;
+import com.edu.onlineEducation.service.dto.UpdateUserRequestDto;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/user/student")
 
 public class UserController {
 
@@ -23,22 +24,22 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/list")
-    public ResponseEntity<List<User>> getUserList() {
+    public ResponseEntity<List<Student>> getUserList() {
         return ResponseEntity.ok(userService.getUserList());
     }
 
     @PostMapping("/create")
-    public ResponseEntity<User> createUser(@RequestBody CreateUserRequestDto requestDto) {
+    public ResponseEntity<Student> createUser(@RequestBody CreateStudentRequestDto requestDto) {
         return ResponseEntity.ok(userService.createUser(requestDto));
     }
 
     @PostMapping("/update")
-    public ResponseEntity<User> updateUser(@RequestBody UpdateUserRequestDto requestDto) {
+    public ResponseEntity<Student> updateUser(@RequestBody UpdateUserRequestDto requestDto) {
         return ResponseEntity.ok(userService.updateUser(requestDto));
     }
 
     @PostMapping("/delete")
-    public ResponseEntity<User> deleteUser(@RequestBody DeleteUserRequestDto requestDto) {
+    public ResponseEntity<Student> deleteUser(@RequestBody DeleteUserRequestDto requestDto) {
         return ResponseEntity.ok(userService.deleteUser(requestDto.getId()));
     }
 }

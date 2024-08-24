@@ -1,4 +1,4 @@
-package com.example.onlineEducation;
+package com.edu.onlineEducation;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
