@@ -1,16 +1,13 @@
 package com.edu.onlineEducation.service;
 
-import com.edu.onlineEducation.entity.Student;
 import com.edu.onlineEducation.repository.StudentUserRepository;
-import com.edu.onlineEducation.service.dto.CreateStudentRequestDto;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 class UserServiceTest {
 
     @InjectMocks
-    public UserService userService;
+    public StudentUserService userService;
     @Mock
     public StudentUserRepository userRepository;
 

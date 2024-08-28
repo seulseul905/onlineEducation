@@ -6,17 +6,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "edu_user")
+@Table(name = "edu_student")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,11 +39,11 @@ public class Student {
     @Column(name = "student_user_use_yn")
     private boolean studentUserUseYn;
 
-    public void setStudentUserName(String studentUserName) {
-        this.studentUserName = studentUserName;
-    }
-
-    public void setStudentUserUseYn(boolean studentUserUseYn) {
-        this.studentUserUseYn = studentUserUseYn;
-    }
+//    public void setStudentUserName(String studentUserName) {
+//        this.studentUserName = studentUserName;
+//    }
+//
+//    public void setStudentUserUseYn(boolean studentUserUseYn) {
+//        this.studentUserUseYn = studentUserUseYn;
+//    }
 }
