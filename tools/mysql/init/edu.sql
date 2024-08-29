@@ -21,3 +21,13 @@ create TABLE edu.edu_instructor (
 	instructor_user_use_yn tinyint(1) default 1 not null comment '강사 회원 사용여부',
 	PRIMARY KEY (instructor_id)
 )
+
+-- 강의 테이블
+create TABLE edu.edu_lecture (
+    lecture_id BIGINT auto_increment not null comment '강의ID',
+	lecture_name varchar(100) not null comment '강의명',
+	lecture_instructor_name varchar(100) not null comment '강의 강사명',
+	lecture_student_name varchar(100) not null comment '수강생명',
+	lecture_use_yn tinyint(1) default 1 not null comment '강의 사용여부',
+	PRIMARY KEY (lecture_id)
+)
