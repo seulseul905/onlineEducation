@@ -2,7 +2,9 @@ package com.edu.onlineEducation.controller;
 
 import com.edu.onlineEducation.entity.Lecture;
 import com.edu.onlineEducation.service.LectureUserService;
-import com.edu.onlineEducation.service.dto.*;
+import com.edu.onlineEducation.service.dto.lecture.CreateLectureRequestDto;
+import com.edu.onlineEducation.service.dto.lecture.DeleteLectureRequestDto;
+import com.edu.onlineEducation.service.dto.lecture.UpdateLectureRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

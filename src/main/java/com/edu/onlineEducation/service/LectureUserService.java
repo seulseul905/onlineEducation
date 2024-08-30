@@ -1,13 +1,9 @@
 package com.edu.onlineEducation.service;
 
-import com.edu.onlineEducation.entity.Instructor;
 import com.edu.onlineEducation.entity.Lecture;
-import com.edu.onlineEducation.repository.InstructorUserRepository;
 import com.edu.onlineEducation.repository.LectureRepository;
-import com.edu.onlineEducation.service.dto.CreateInstructorRequestDto;
-import com.edu.onlineEducation.service.dto.CreateLectureRequestDto;
-import com.edu.onlineEducation.service.dto.UpdateInstructorRequestDto;
-import com.edu.onlineEducation.service.dto.UpdateLectureRequestDto;
+import com.edu.onlineEducation.service.dto.lecture.CreateLectureRequestDto;
+import com.edu.onlineEducation.service.dto.lecture.UpdateLectureRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +15,7 @@ public class LectureUserService {
 
     @Autowired
     private LectureRepository lectureRepository;
+
 
     public List<Lecture> getInstructorUserList() {
         return lectureRepository.findAllByLectureUseYn(true);

@@ -1,6 +1,5 @@
 package com.edu.onlineEducation.repository;
 
-import com.edu.onlineEducation.entity.Instructor;
 import com.edu.onlineEducation.entity.Lecture;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

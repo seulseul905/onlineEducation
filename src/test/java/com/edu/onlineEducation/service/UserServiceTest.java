@@ -1,15 +1,15 @@
 package com.edu.onlineEducation.service;
 
-import com.edu.onlineEducation.repository.StudentUserRepository;
+import com.edu.onlineEducation.repository.UserRepository;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 class UserServiceTest {
 
     @InjectMocks
-    public StudentUserService userService;
+    public UserService userService;
     @Mock
-    public StudentUserRepository userRepository;
+    public UserRepository userRepository;
 
 //    @Test
 //    public void createUserTest() {
