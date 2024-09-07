@@ -1,6 +1,6 @@
--- 학생 회원 테이블
+-- 회원 테이블
 create TABLE edu.edu_users (
-  `id` BIGINT auto_increment not null comment '사용자 ID',
+    `id` BIGINT auto_increment not null comment '사용자 ID',
 	`login_id` varchar(50) not null comment '사용자 계정',
 	`password` varchar(500) not null comment '사용자 비밀번호',
 	`name` varchar(100) not null comment '사용자 이름',
@@ -19,14 +19,21 @@ create TABLE edu.edu_users (
 ;
 
 
-// TODO : Lecture Table 다시 설계 해보기~
+-- TODO : Lecture Table 다시 설계 해보기~
 
 -- 강의 테이블
 create TABLE edu.edu_lecture (
-  lecture_id BIGINT auto_increment not null comment '강의ID',
-	lecture_name varchar(100) not null comment '강의명',
-	lecture_instructor_name varchar(100) not null comment '강의 강사명',
-	lecture_student_name varchar(100) not null comment '수강생명',
-	lecture_use_yn tinyint(1) default 1 not null comment '강의 사용여부',
-	PRIMARY KEY (lecture_id)
+    `lecture_id` BIGINT auto_increment not null comment '강의ID',
+	`title` varchar(50) not null comment '강의 제목',
+	`price` varchar(100) not null comment '강의 가격',
+	`content` varchar(100) not null comment '강의 소개글',
+	`personnel` BIGINT default 0 not null comment '정원 수',
+	`lecture_use_yn` tinyint(1) default 1 not null comment '강의 사용여부',
+	`created_at` datetime(6) not null comment '강의 생성일시',
+	`updated_at` datetime(6) not null comment '강의 수정일시',
+	PRIMARY KEY (lecture_id),
+	index         title(title),
+	index         lecture_use_yn(lecture_use_yn),
+	index         created_at(created_at),
+	index         updated_at(updated_at)
 )

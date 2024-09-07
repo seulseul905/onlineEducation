@@ -2,9 +2,9 @@ package com.edu.onlineEducation.controller;
 
 import com.edu.onlineEducation.entity.User;
 import com.edu.onlineEducation.service.UserService;
-import com.edu.onlineEducation.service.dto.student.CreateUserRequestDto;
-import com.edu.onlineEducation.service.dto.student.DeleteUserRequestDto;
-import com.edu.onlineEducation.service.dto.student.UpdateUserRequestDto;
+import com.edu.onlineEducation.service.dto.user.CreateUserRequestDto;
+import com.edu.onlineEducation.service.dto.user.DeleteUserRequestDto;
+import com.edu.onlineEducation.service.dto.user.UpdateUserRequestDto;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

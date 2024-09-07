@@ -4,7 +4,7 @@ import com.edu.onlineEducation.repository.UserRepository;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
-class UserServiceTest {
+class UserServiceTest1 {
 
     @InjectMocks
     public UserService userService;

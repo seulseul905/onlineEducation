@@ -1,4 +1,4 @@
-package com.edu.onlineEducation.service.dto.student;
+package com.edu.onlineEducation.service.dto.user;
 
 import lombok.Getter;
 import lombok.Setter;

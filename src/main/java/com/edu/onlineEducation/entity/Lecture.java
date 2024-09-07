@@ -3,6 +3,9 @@ package com.edu.onlineEducation.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigInteger;
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,15 +19,24 @@ public class Lecture {
     @Column(name = "lecture_id")
     private Long lectureId;
 
-    @Column(name = "lecture_name")
-    private String lectureName;
+    @Column(name = "title")
+    private String title;
 
-    @Column(name = "lecture_instructor_name")
-    private String lectureInstructorName;
+    @Column(name = "price")
+    private String price;
 
-    @Column(name = "lecture_student_name")
-    private String lectureStudentName;
+    @Column(name = "content")
+    private String content;
+
+    @Column(name = "personnel")
+    private long personnel;
 
     @Column(name = "lecture_use_yn")
     private boolean lectureUseYn;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 }

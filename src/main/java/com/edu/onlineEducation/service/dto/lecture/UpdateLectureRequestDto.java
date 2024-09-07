@@ -7,7 +7,9 @@ import lombok.Setter;
 @Setter
 public class UpdateLectureRequestDto {
     private long lectureId;
-    private String lectureName;
-    private String lectureInstructorName;
-    private String lectureStudentName;
+    private String title;
+    private String price;
+    private String content;
+    private long personnel;
+    private boolean lectureUseYn;
 }
