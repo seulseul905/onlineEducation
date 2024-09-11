@@ -2,7 +2,6 @@ package com.edu.onlineEducation.service;
 
 import com.edu.onlineEducation.entity.Lecture;
 import com.edu.onlineEducation.exception.LectuerNotFoundException;
-import com.edu.onlineEducation.exception.UserNotFoundException;
 import com.edu.onlineEducation.repository.LectureRepository;
 import com.edu.onlineEducation.service.dto.lecture.CreateLectureRequestDto;
 import com.edu.onlineEducation.service.dto.lecture.UpdateLectureRequestDto;
@@ -14,7 +13,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-public class LectureUserService {
+public class LectureService {
 
     @Autowired
     private LectureRepository lectureRepository;

@@ -37,3 +37,17 @@ create TABLE edu.edu_lecture (
 	index         created_at(created_at),
 	index         updated_at(updated_at)
 )
+
+-- 회원 강의 테이블
+create TABLE edu.edu_user_lecture(
+    `id` BIGINT not null comment '사용자ID',
+    `lecture_id` BIGINT not null comment '강의ID',
+    `instructor_name` varchar(100) not null comment '강사 이름',
+    `class_use_yn` tinyint(1) default 1 not null comment '수강 여부',
+    `created_at` datetime(6) not null comment '강의 생성일시',
+	`updated_at` datetime(6) not null comment '강의 수정일시',
+    index       id(id),
+    index       lecture_id(lecture_id),
+    index       created_at(created_at),
+	index       updated_at(updated_at)
+)

@@ -1,7 +1,7 @@
 package com.edu.onlineEducation.controller;
 
 import com.edu.onlineEducation.entity.Lecture;
-import com.edu.onlineEducation.service.LectureUserService;
+import com.edu.onlineEducation.service.LectureService;
 import com.edu.onlineEducation.service.dto.lecture.CreateLectureRequestDto;
 import com.edu.onlineEducation.service.dto.lecture.DeleteLectureRequestDto;
 import com.edu.onlineEducation.service.dto.lecture.UpdateLectureRequestDto;
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/user/lecture")
+@RequestMapping("/api/lecture")
 
-public class LectureUserController {
+public class LectureController {
 
     @Autowired
-    private LectureUserService lectureUserService;
+    private LectureService lectureUserService;
 
     @GetMapping("/list")
     public ResponseEntity<List<Lecture>> getUserList() {
