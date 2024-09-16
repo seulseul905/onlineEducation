@@ -15,6 +15,11 @@ import java.time.LocalDateTime;
 @Table(name = "edu_user_lecture")
 public class UserLecture {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "edu_id")
+    private Long eduId;
+
     @ManyToOne
     @JoinColumn(name = "id")
     private User userId;

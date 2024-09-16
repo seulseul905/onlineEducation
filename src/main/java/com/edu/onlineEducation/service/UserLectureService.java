@@ -1,22 +1,15 @@
 package com.edu.onlineEducation.service;
 
-import com.edu.onlineEducation.entity.User;
 import com.edu.onlineEducation.entity.UserLecture;
 import com.edu.onlineEducation.exception.UserNotFoundException;
 import com.edu.onlineEducation.repository.UserLectureRepository;
-import com.edu.onlineEducation.repository.UserRepository;
-import com.edu.onlineEducation.service.dto.user.CreateUserRequestDto;
-import com.edu.onlineEducation.service.dto.user.UpdateUserRequestDto;
 import com.edu.onlineEducation.service.dto.userLecture.CreateUserLectureRequestDto;
-import com.edu.onlineEducation.service.dto.userLecture.DeleteUserLectureRequestDto;
 import com.edu.onlineEducation.service.dto.userLecture.UpdateUserLectureRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
-import java.util.Base64;
 import java.util.List;
 
 @Service
@@ -26,13 +19,13 @@ public class UserLectureService {
     private UserLectureRepository userLectureRepository;
 
     public List<UserLecture> getUserList() {
-        return userLectureRepository.findAllByUseYn(true);
+        return userLectureRepository.findAllByClassUseYn(true);
     }
 
     @Transactional
     public UserLecture createUserLecture(CreateUserLectureRequestDto requestDto) {
 
-        if (requestDto.getInstructorName() == null) {
+        if (requestDto.getId() == null) {
             throw new IllegalArgumentException("필수값이 없습니다.");
         }
         return userLectureRepository.save(
@@ -52,7 +45,7 @@ public class UserLectureService {
             throw new IllegalArgumentException("필수값이 없습니다.");
         }
 
-        UserLecture existUser = userLectureRepository.findByIdAndUseYn(requestDto.getId(), true)
+        UserLecture existUser = userLectureRepository.findByEduIdAndClassUseYn(requestDto.getEduId(), true)
             .orElseThrow(() -> new UserNotFoundException("사용자 정보가 없습니다."));
 
         if (requestDto.getId() != null) {
@@ -68,9 +61,10 @@ public class UserLectureService {
     }
 
     @Transactional
-    public UserLecture deleteUserLecture(User id) {
-        UserLecture existUser = userLectureRepository.findByIdAndUseYn(id, true)
+    public UserLecture deleteUserLecture(long id) {
+        UserLecture existUser = userLectureRepository.findByEduIdAndClassUseYn(id, true)
             .orElseThrow(() -> new UserNotFoundException("사용자 정보가 없습니다."));
+        existUser.setClassUseYn(false);
         existUser.setUpdatedAt(LocalDateTime.now());
         return existUser;
     }

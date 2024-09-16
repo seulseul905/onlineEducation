@@ -46,7 +46,7 @@ public class LectureService {
         if (requestDto.getTitle().isBlank()) {
             throw new IllegalArgumentException("필수값이 없습니다.");
         }
-        Lecture existLecture = lectureRepository.findById(requestDto.getLectureId())
+        Lecture existLecture = lectureRepository.findByLectureIdAndLectureUseYn(requestDto.getLectureId(), true)
                 .orElseThrow(() -> new LectuerNotFoundException("강의 정보가 없습니다."));
 
         if(requestDto.getPrice() != null && !requestDto.getPrice().equals(existLecture.getPrice())) {
@@ -68,7 +68,7 @@ public class LectureService {
 
     @Transactional
     public Lecture deleteUser(long lectureId) {
-        Lecture existUser = lectureRepository.findById(lectureId)
+        Lecture existUser = lectureRepository.findByLectureIdAndLectureUseYn(lectureId, true)
                 .orElseThrow(() -> new LectuerNotFoundException("강의 정보가 없습니다."));
         existUser.setLectureUseYn(false);
         return existUser;

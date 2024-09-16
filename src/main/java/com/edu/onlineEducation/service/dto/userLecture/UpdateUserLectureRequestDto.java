@@ -10,6 +10,7 @@ import lombok.Setter;
 @Setter
 public class UpdateUserLectureRequestDto {
 
+    private  long eduId;
     private User id;
     private Lecture lectureId;
     private String instructorName;

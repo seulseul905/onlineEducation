@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public interface UserLectureRepository extends JpaRepository<UserLecture, Long> {
 
-    Optional<UserLecture> findByIdAndUseYn(User id, boolean useYn);
+    Optional<UserLecture> findByEduIdAndClassUseYn(long eduId, boolean classUseYn);
 
-    List<UserLecture> findAllByUseYn(boolean useYn);
+    List<UserLecture> findAllByClassUseYn(boolean classUseYn);
 }

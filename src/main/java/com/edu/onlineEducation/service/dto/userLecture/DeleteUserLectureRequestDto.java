@@ -9,7 +9,5 @@ import lombok.Setter;
 @Setter
 public class DeleteUserLectureRequestDto {
 
-    private User id;
-    private Lecture lectureId;
-
+    private long eduId;
 }

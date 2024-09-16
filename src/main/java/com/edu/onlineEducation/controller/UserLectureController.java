@@ -40,6 +40,6 @@ public class UserLectureController {
 
     @PostMapping("/delete")
     public ResponseEntity<UserLecture> deleteUser(@RequestBody DeleteUserLectureRequestDto requestDto) {
-        return ResponseEntity.ok(userLectureService.deleteUserLecture(requestDto.getId()));
+        return ResponseEntity.ok(userLectureService.deleteUserLecture(requestDto.getEduId()));
     }
 }

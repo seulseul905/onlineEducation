@@ -56,12 +56,14 @@ public class UserService {
         User existUser = userRepository.findByIdAndUseYn(requestDto.getId(), true)
             .orElseThrow(() -> new UserNotFoundException("사용자 정보가 없습니다."));
 
-        String encryptPassword = Base64.getEncoder().encodeToString(requestDto.getPassword().getBytes(
-            StandardCharsets.UTF_8));
-
-        if (requestDto.getPassword() != null && !existUser.getPassword().equals(encryptPassword)) {
-            existUser.setPassword(requestDto.getPassword());
+        if(requestDto.getPassword() != null){
+            String encryptPassword = Base64.getEncoder().encodeToString(requestDto.getPassword().getBytes(
+                    StandardCharsets.UTF_8));
+            if(!existUser.getPassword().equals(encryptPassword)){
+                existUser.setPassword(requestDto.getPassword());
+            }
         }
+
         if (requestDto.getPhone() != null) {
             existUser.setPhone(replacePhoneNumber(requestDto.getPhone()));
         }
