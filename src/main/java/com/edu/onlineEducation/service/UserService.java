@@ -10,6 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.List;
+import javax.swing.text.html.parser.Parser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,6 +35,8 @@ public class UserService {
             || requestDto.getUserType() == null) {
             throw new IllegalArgumentException("필수값이 없습니다.");
         }
+
+
 
         String encryptPassword = Base64.getEncoder()
             .encodeToString(requestDto.getPassword().getBytes(StandardCharsets.UTF_8));
