@@ -5,6 +5,7 @@ import com.edu.onlineEducation.exception.UserNotFoundException;
 import com.edu.onlineEducation.repository.UserRepository;
 import com.edu.onlineEducation.service.dto.user.CreateUserRequestDto;
 import com.edu.onlineEducation.service.dto.user.UpdateUserRequestDto;
+import io.micrometer.common.util.StringUtils;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.Base64;
@@ -18,7 +19,7 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
-    
+
     public List<User> getUserList() {
         return userRepository.findAllByUseYn(true);
     }
@@ -26,8 +27,11 @@ public class UserService {
     @Transactional
     public User createUser(CreateUserRequestDto requestDto) {
 
-        if (requestDto.getLoginId() == null || requestDto.getName() == null
-            || requestDto.getPassword() == null || requestDto.getPhone() == null) {
+        if (StringUtils.isBlank(requestDto.getLoginId())
+            || StringUtils.isBlank(requestDto.getName())
+            || StringUtils.isBlank(requestDto.getPassword())
+            || StringUtils.isBlank(requestDto.getPhone())
+            || requestDto.getUserType() == null) {
             throw new IllegalArgumentException("필수값이 없습니다.");
         }
 
@@ -56,10 +60,10 @@ public class UserService {
         User existUser = userRepository.findByIdAndUseYn(requestDto.getId(), true)
             .orElseThrow(() -> new UserNotFoundException("사용자 정보가 없습니다."));
 
-        if(requestDto.getPassword() != null){
+        if (requestDto.getPassword() != null) {
             String encryptPassword = Base64.getEncoder().encodeToString(requestDto.getPassword().getBytes(
-                    StandardCharsets.UTF_8));
-            if(!existUser.getPassword().equals(encryptPassword)){
+                StandardCharsets.UTF_8));
+            if (!existUser.getPassword().equals(encryptPassword)) {
                 existUser.setPassword(requestDto.getPassword());
             }
         }
@@ -67,9 +71,11 @@ public class UserService {
         if (requestDto.getPhone() != null) {
             existUser.setPhone(replacePhoneNumber(requestDto.getPhone()));
         }
+
         if (requestDto.getUserType() != null) {
             existUser.setUserType(requestDto.getUserType());
         }
+
         existUser.setName(requestDto.getName());
         existUser.setUseYn(requestDto.isUseYn());
         existUser.setUpdatedAt(LocalDateTime.now());

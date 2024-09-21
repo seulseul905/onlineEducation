@@ -51,8 +51,8 @@ public class UserLectureService {
         // 4. 저장
         return userLectureRepository.save(
             UserLecture.builder()
-                .userId(user.getId())
-                .lectureId(requestDto.getLectureId())
+                .userId(user)
+                .lectureId(lecture)
                 .createdAt(LocalDateTime.now())
                 .updatedAt(LocalDateTime.now())
                 .build());
@@ -66,17 +66,17 @@ public class UserLectureService {
         // 강의가 마감이 되었는데 대기를 등록하는 기능
         // 자리가 생겨서 다시 요청이 가능한 경우 재요청
 
-//        UserLecture existUser = userLectureRepository.findByEduIdAndClassUseYn(requestDto.getEduId(), true)
-//            .orElseThrow(() -> new UserNotFoundException("사용자 정보가 없습니다."));
-//
-//        if (requestDto.getId() != null) {
-//            existUser.setUserId(requestDto.getId());
-//        }
-//        if (requestDto.getLectureId() != null) {
-//            existUser.setLectureId(requestDto.getLectureId());
-//        }
-//        existUser.setInstructorName(requestDto.getInstructorName());
-//        existUser.setUpdatedAt(LocalDateTime.now());
+        UserLecture existUser = userLectureRepository.findByEduIdAndClassUseYn(requestDto.getEduId(), true)
+            .orElseThrow(() -> new UserNotFoundException("사용자 정보가 없습니다."));
+
+        if (requestDto.getId() != null) {
+            existUser.setUserId(requestDto.getId());
+        }
+        if (requestDto.getLectureId() != null) {
+            existUser.setLectureId(requestDto.getLectureId());
+        }
+        existUser.setInstructorName(requestDto.getInstructorName());
+        existUser.setUpdatedAt(LocalDateTime.now());
 
         return existUser;
     }
