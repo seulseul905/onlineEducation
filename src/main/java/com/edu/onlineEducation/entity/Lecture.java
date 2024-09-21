@@ -1,10 +1,20 @@
 package com.edu.onlineEducation.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
-
-import java.math.BigInteger;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -14,9 +24,10 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "edu_lecture")
 public class Lecture {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "lecture_id")
+    @Column(name = "id")
     private Long lectureId;
 
     @Column(name = "title")
@@ -39,4 +50,8 @@ public class Lecture {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @OneToMany(mappedBy = "lectureId")
+    @JoinColumn
+    private List<UserLecture> userLectureList;
 }
